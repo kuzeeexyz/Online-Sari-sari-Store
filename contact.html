@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     SariSari PH — Contact Page
+     Contact form (validated by app.js), store details, business
+     hours, a Google Maps placeholder and social media links.
+     ============================================================ -->
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with SariSari PH — visit the store, send us a message, or follow us on social media.">
+  <title>Contact Us — SariSari PH</title>
+
+  <!-- Prevents theme flash by applying saved theme before first paint -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('sarisari-theme');
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', saved || (dark ? 'dark' : 'light'));
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="contact">
+
+  <!-- ======================= LOADING OVERLAY ======================= -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">SariSari<span>PH</span></p>
+  </div>
+
+  <!-- ======================= NAVBAR ======================= -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand" aria-label="SariSari PH home">
+        <svg class="brand-icon" viewBox="0 0 32 32" width="28" height="28" fill="none"
+             stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 12h16l-2 14H10z" fill="currentColor" stroke="none"/>
+          <path d="M12 12c0-4 2-6 4-6s4 2 4 6" />
+        </svg>
+        <span class="brand-text">SariSari<em>PH</em></span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="shop.html">Shop</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" aria-label="Switch between light and dark mode">
+            <svg class="icon icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+            </svg>
+            <svg class="icon icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+            </svg>
+          </button>
+
+          <button class="cart-btn" id="cartBtn" aria-label="Open shopping cart">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======================= PAGE HEADER ======================= -->
+    <section class="page-header">
+      <div class="container">
+        <span class="eyebrow">Say hello</span>
+        <h1>Contact Us</h1>
+        <p>Order help, delivery questions, or just want to chat? We're all ears.</p>
+      </div>
+    </section>
+
+    <!-- ======================= CONTACT INFO CARDS ======================= -->
+    <section class="section">
+      <div class="container">
+        <div class="contact-info-grid" id="contactInfoGrid">
+          <!-- Four static contact cards -->
+          <div class="contact-card reveal">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3>Visit Us</h3>
+            <p>123 Mabini Street,<br>Brgy. Sampaguita,<br>Quezon City, Metro Manila</p>
+          </div>
+
+          <div class="contact-card reveal">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3>Call Us</h3>
+            <p><a href="tel:+639123456789">0912 345 6789</a><br>Landline: (02) 8123 4567</p>
+          </div>
+
+          <div class="contact-card reveal">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+            </div>
+            <h3>Email Us</h3>
+            <p><a href="mailto:hello@sarisariph.store">hello@sarisariph.store</a><br>orders@sarisariph.store</p>
+          </div>
+
+          <div class="contact-card reveal">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3>Business Hours</h3>
+            <p>Mon – Sat: 6:00 AM – 10:00 PM<br>Sunday: 7:00 AM – 9:00 PM<br>Open during holidays</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= FORM + MAP ======================= -->
+    <section class="section section-alt">
+      <div class="container contact-grid">
+
+        <!-- Contact form -->
+        <div class="contact-form-wrap reveal">
+          <span class="eyebrow">Send a message</span>
+          <h2>We'd Love to Hear From You</h2>
+
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">Full Name</label>
+                <input type="text" id="contactName" name="name" placeholder="Juan Dela Cruz" required>
+                <span class="form-error" data-for="contactName"></span>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email Address</label>
+                <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required>
+                <span class="form-error" data-for="contactEmail"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactPhone">Phone Number</label>
+                <input type="tel" id="contactPhone" name="phone" placeholder="0912 345 6789" required>
+                <span class="form-error" data-for="contactPhone"></span>
+              </div>
+              <div class="form-group">
+                <label for="contactSubject">Subject</label>
+                <input type="text" id="contactSubject" name="subject" placeholder="Order concern" required>
+                <span class="form-error" data-for="contactSubject"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="message" rows="5" placeholder="How can we help you today?" required></textarea>
+              <span class="form-error" data-for="contactMessage"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Google Maps placeholder + socials -->
+        <div class="contact-side reveal">
+          <div class="map-placeholder" role="img" aria-label="Map placeholder showing store location at 123 Mabini Street, Quezon City">
+            <div class="map-grid" aria-hidden="true"></div>
+            <div class="map-pin">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>SariSari PH</span>
+            </div>
+            <p class="map-note">Google Map loads here — find us at the corner of Mabini and Sampaguita Street.</p>
+          </div>
+
+          <div class="social-block">
+            <h3>Follow Our Store</h3>
+            <p>Daily promos, restock alerts and neighborhood news.</p>
+            <div class="social-links social-links-lg">
+              <a href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a href="#" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4 4l7.2 9.3L4.4 20h2.4l5.6-5.5L17 20h3l-7.5-9.7L18.9 4h-2.4l-5 5.2L7 4z"/></svg>
+              </a>
+              <a href="#" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer">
+    <div class="container footer-grid">
+
+      <div class="footer-col footer-brand">
+        <a href="index.html" class="brand footer-brand-link">
+          <svg class="brand-icon" viewBox="0 0 32 32" width="26" height="26" fill="none"
+               stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 12h16l-2 14H10z" fill="currentColor" stroke="none"/>
+            <path d="M12 12c0-4 2-6 4-6s4 2 4 6" />
+          </svg>
+          <span class="brand-text">SariSari<em>PH</em></span>
+        </a>
+        <p>Your friendly neighborhood sari-sari store, online. Fresh products, fair prices and warm "salamat po"
+        with every order.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 4l7.2 9.3L4.4 20h2.4l5.6-5.5L17 20h3l-7.5-9.7L18.9 4h-2.4l-5 5.2L7 4z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Planta</li>
+          <li>Toledo City, Cebu</li>
+          <li>0967 993 1234</li>
+          <li><a href="mailto:hello@sarisariph.store">hello@sarisariph.store</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Business Hours</h4>
+        <ul>
+          <li>Mon – Sat: 6:00 AM – 10:00 PM</li>
+          <li>Sunday: 7:00 AM – 9:00 PM</li>
+          <li>Open during holidays</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 SariSari PH. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================= SHOPPING CART DRAWER ======================= -->
+  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-header">
+      <h3>Your Cart</h3>
+      <button class="drawer-close" id="cartClose" aria-label="Close cart">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="drawer-items" id="cartItems"></div>
+    <div class="drawer-footer" id="cartFooter"></div>
+  </aside>
+
+  <!-- ======================= CHECKOUT MODAL ======================= -->
+  <div class="checkout-overlay" id="checkoutOverlay" aria-hidden="true">
+    <div class="checkout-modal" role="dialog" aria-modal="true" aria-label="Checkout">
+      <button class="checkout-close" id="checkoutClose" aria-label="Close checkout">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="checkout-content" id="checkoutContent"></div>
+    </div>
+  </div>
+
+  <!-- ======================= TOASTS & BACK-TO-TOP ======================= -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <!-- JavaScript — loaded in dependency order -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
